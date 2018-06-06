@@ -5,18 +5,35 @@
 import PIL.Image
 import os, sys
 
+#参数个数：len(sys.argv)
+#脚本名：    sys.argv[0]
+#参数1：     sys.argv[1]
+#参数2：     sys.argv[2]
+
+
+print(u"脚本名：", sys.argv[0])
+for i in range(1, len(sys.argv)):#这里参数从1开始
+    print(u"参数", i, sys.argv[i])
+
+#格式转换
 def convert(dir):
     file_list = os.listdir(dir)
     print(file_list)
     for filename in file_list:
         path = ''
         path = dir+"/"+filename
+
         print(path)
+        
         im = PIL.Image.open(path)
+        #裁剪图片大小宽高,(width,height,)
+        #rgb_im = im.resize(0,0)
+        #修改图片格式转换通道由RGBA转换为RGB
         rgb_im = im.convert('RGB')
+
         rgb_im.save("F:/MyProject/python_exempl/image2/" + "test2" + ".jpg") #这个地方根据实际情况而定（存储图片的路径+图片名称+需要转换成的图片格式）
         print ("%s has been changed!"%filename)
 
 if __name__ == '__main__':
    dir = "F:/MyProject/python_exempl/image"  #运行后输入要进行转换的图片的路径
-   convert(dir)
+   #convert(dir)

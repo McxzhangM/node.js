@@ -3,6 +3,10 @@ var fs = require("fs");
 var url = require("url");
 var cp = require("child_process");
 
+//python传参
+var arg1 = 'hello'
+var arg2 = 'jzhou'
+
 http.createServer(function(req,res){
 
     var pathname = url.parse(req.url).pathname;
@@ -18,11 +22,12 @@ http.createServer(function(req,res){
             res.write(data.toString());
 
             //执行Python脚本文件
-            cp.exec('python testPy.py',function(error,stdout,stderr){
+            cp.exec('python testPy.py '+arg1+' '+arg2+' ',function(error,stdout,stderr){
                 if(error !== null){
                     console.log('exec error:'+ error);
                     return;
                 }
+                console.log(stdout);
                 console.log('exec success:');
             });
         }

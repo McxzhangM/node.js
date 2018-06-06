@@ -7,15 +7,93 @@
 </head>
 
 <body>
-    <!-- <img src="./view/image/window_test.png" alt="图片加载失败"> -->
-    <p>上传文件</p>
+    <div id="home_head">
+        <div id="home_logo"></div>
+        <dir id="home_lable"></dir>
+    </div>
 
-    <form action="./upload_file" method="post" enctype="multipart/form-data" target="nm_iframe">
-        <input type="file" name="inputfile" onchange="changeImage(this)"> 
-        <input type="submit" value="上传">
-    </form> 
+    <div id="home_ad">
+    </div>
+    
+    <div id="main_center">
+        <p style="margin-left: 40%">预览：</p>
+        <img src="./view/image/window_test.png" alt="图片加载失败" id="preview_image">
 
-    <iframe id="id_iframe" name="nm_iframe" style="display:none;"></iframe>
+        <hr style="height:1px;border:none;border-top:1px solid #555555;margin-top: 10px">
+
+        <div id="center_input">
+            <p>上传文件</p>
+            <input type="file" name="inputfile" onchange="changeImage(this)" id="upload_input" accept="image/png, image/jpeg, image/gif, image/jpg"> 
+            <button onclick="upload_image()" style="width: 70px;height: 25px;">上传</button>
+
+            <span id="upload_alert">文件已上传</span>
+        </div>
+        <hr style="height:1px;border:none;border-top:1px solid #555555;margin-top: 10px">
+         <!-- loading -->
+        <div id="div_loading" style="display: none">
+            <img src="./view/image/loading.gif" alt="加载失败">
+        </div>
+        <!-- 选项 -->
+        <div id="center_option">
+            
+            <label>格式：</label><br>
+            <input type="radio" name="type" value=""  checked/> 无
+            <input type="radio" name="type" value="png" /> png
+            <input type="radio" name="type" value="jpg" /> jpg
+            <input type="radio" name="type" value="jpeg" /> jpeg
+            <input type="radio" name="type" value="webp" /> webp
+            <input type="radio" name="type" value="bmp" /> bmp
+            <br>
+            
+            <button style="width: 70px;height: 30px;" onclick="download_image()">下载</button><br>
+
+            <!-- ************************************************************************** -->
+            <label>可选项:</label><br>
+            <label>图片上添加自定义文字</label><br>
+            输入添加的文字：<input type="text" maxlength="100" placeholder="不超过100个字" name="text" value=""><br>
+
+
+            <label>自定义尺寸</label><br>
+            宽：<input type="text" maxlength="10000" placeholder="宽度不超过2000" name="width" value="">
+            高：<input type="text" maxlength="10000" placeholder="高度不超过2000" name="height" value=""><br>
+
+
+            <label>图片逆时针旋转</label><br>
+            <input type="radio" name="rotate" value="" checked/> 无
+            <input type="radio" name="rotate" value="45" /> 45°
+            <input type="radio" name="rotate" value="90" /> 90°
+            <input type="radio" name="rotate" value="135" /> 135°
+            <input type="radio" name="rotate" value="180" /> 180°
+            <input type="radio" name="rotate" value="225" /> 225°
+            <input type="radio" name="rotate" value="270" /> 270°
+            <input type="radio" name="rotate" value="315" /> 315°
+        </div>
+
+        <!-- 说明 -->
+        <div id="center_instructions">
+            <div id="instructions_left">
+                <p>使用说明:</p>
+                <p>1.</p>
+                <p>2.</p>
+                <p>3.</p>
+                <p>4.</p>
+            </div>
+            <div id="instructions_right">
+                <p>使用说明:</p>
+                <p>1.</p>
+                <p>2.</p>
+                <p>3.</p>
+                <p>4.</p>
+            </div>
+        </div>
+    </div>
+
+    <hr id="home_hr"/>
+
+    <div id="foot">
+    </div>
+    
+    <iframe id="home_download" style="display: none"></iframe>
 
 </body>
 </html>

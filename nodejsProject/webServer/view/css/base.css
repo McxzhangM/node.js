@@ -2,3 +2,75 @@ body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,code,form,fieldset,legend,input
     margin:0;
     padding:0;
 }
+
+div{
+    /* border:1px dashed red; */
+}
+
+#home_head{
+    margin-left: 10%;
+    width: 80%;
+    height: 70px;
+    background: #5b6270;
+}
+
+#home_ad{
+    margin-top: 1%;
+    margin-left: 10%;
+    width: 80%;
+    height: 170px;
+}
+#preview_image {
+    margin-left: 40%;
+    width: 200px;
+    height: 200px;
+}
+
+#main_center{
+    margin-top: 3%;
+    margin-left: 10%;
+    width: 80%;
+    background: #EAEAEA;
+}
+
+#center_input{
+    margin-left: 35%;
+}
+
+#center_instructions{
+    height: 300px;
+    /* border:1px dashed #5b6270; */
+}
+
+#instructions_left{
+    width: 69%;
+    float: left;
+    border:1px dashed #5b6270;
+}
+
+#instructions_right{
+    width: 30%;
+    float: left;
+}
+
+#center_option{
+    margin-left: 15%;
+}
+
+#home_hr{
+    margin-top: 1%;
+    height:5px;
+    border:none;
+    border-top:3px ridge #5b6270;
+}
+
+#foot{
+    margin-top: 2%;
+    margin-left: 10%;
+    width: 80%;
+    height: 150px;
+}
+
+#div_loading{
+    margin-left: 44%;
+}
