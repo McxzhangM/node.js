@@ -63,12 +63,12 @@ function upload_image(){
     //制定图片名称，图片名+日期，传递给服务端做修改
     option.image_name_arr = upload_image_obj.name.split(".");
     option.image_name_arr[0] = option.image_name_arr[0] + new Date().format("yyyyMMddhhmmss")
-
+    
     //添加参数图片对象，图片名称，图片类型
     option.formData.append("inputfile",upload_image_obj);
-    option.formData.append("image_name",option.image_name_arr[0]);
-    option.formData.append("image_type",option.image_name_arr[1]);
-    
+    option.formData.append("image_name",esCode(option.image_name_arr[0]));
+    option.formData.append("image_type",esCode(option.image_name_arr[1]));
+
     //上传请求
     $.ajax({
         url: option.url + '/upload_file',
@@ -78,11 +78,14 @@ function upload_image(){
         processData : false,
         contentType : false,
         success:function(data){
-            console.log("success");
+            if(data.code == "0"){
+                alert(data.data);
+            }
             $("#upload_input").val('');
             $("#upload_alert").attr('display:block');
         },
         error:function(err){
+            alert("上传失败");
             console.log(err);
         }
     })
@@ -91,7 +94,7 @@ function upload_image(){
 //下载；文件名;转换后格式；添加文字,文字位置；宽，高；旋转度数
 function download_image(){
 
-    option.radio_type =  $('input[name="type"]:checked').val();
+    option.radio_type =  $('select_after_type').val();
     option.radio_text =  $('#draw_text').val();
     option.draw_text_position = $('input[name="draw_text_position"]:checked').val();
     option.draw_color = $('input[name="draw_color"]:checked').val();
@@ -105,10 +108,10 @@ function download_image(){
     }
 
     try{
-        var url = option.url + "/download?name="+option.image_name_arr[0]+'&befor_type='+option.image_name_arr[1]+
-        "&after_type="+option.radio_type+"&input_test="+option.radio_text+"&width="+option.radio_width+
-        "&height="+option.radio_height+"&rotate="+option.radio_rotate+"&position="+option.draw_text_position+
-        "&color="+option.draw_color;
+        var url = option.url + "/download?name="+esCode(option.image_name_arr[0])+'&befor_type='+esCode(option.image_name_arr[1])+
+        "&after_type="+esCode(option.radio_type)+"&input_test="+esCode(option.radio_text)+"&width="+esCode(option.radio_width)+
+        "&height="+esCode(option.radio_height)+"&rotate="+esCode(option.radio_rotate)+"&position="+esCode(option.draw_text_position)+
+        "&color="+esCode(option.draw_color);
 
         $("#home_download").attr('src',url);
     }catch(e){ 
@@ -137,3 +140,17 @@ Date.prototype.format = function(fmt) {
     }
    return fmt; 
 }   
+
+//加密
+function esCode(code){
+    if(code == ""){
+        return code;
+    }
+    var encryption=String.fromCharCode(code.charCodeAt(0)+code.length);  
+    for(var i=1;i<code.length;i++)  
+     {        
+        encryption+=String.fromCharCode(code.charCodeAt(i)+code.charCodeAt(i-1));  
+    } 
+
+    return encryption;
+}

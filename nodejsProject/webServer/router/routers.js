@@ -32,6 +32,10 @@ router.get('/index.js',function(req,res,next){
 //文件下载
 router.get('/download',function(req,res,next){
     options.arg = querystring.parse(url.parse(req.url).query);
+
+    //参数转换
+    parameterChange();
+
     options.download_path = options.web_dir + "/upload_image_dir/" + options.arg.name +'.'+ options.arg.befor_type;
     options.exec_after_path = options.web_dir+"/download_image_dir/"+options.arg.name +'.'+ options.arg.after_type;
 
@@ -89,8 +93,15 @@ function handleDownloadParameter(){
 
     //转换后类型
     if(options.arg.after_type ==""||undefined){
-        options.arg.after_type = "null"
+        options.arg.after_type = "png"
+    }else{
+        if(options.arg.after_type!= "png"&&options.arg.after_type != "jpg"
+        &&options.arg.after_type != "jpeg"&&options.arg.after_type != "webp"
+        &&options.arg.after_type != "bmp"){
+            options.arg.after_type = "png"
+        }
     }
+
     //添加的文字
     if(options.arg.input_test ==""||undefined){
         options.arg.input_test = "null"
@@ -106,13 +117,55 @@ function handleDownloadParameter(){
     //图片宽度
     if(options.arg.width ==""||undefined){
         options.arg.width = "null"
+    }else{
+        if(parseInt(options.arg.width) > 1000){
+            options.arg.width = "1000";
+        }
     }
+
     //图片高度
     if(options.arg.height ==""||undefined){
         options.arg.height = "null"
+    }else{
+        if(parseInt(options.arg.height) > 1000){
+            options.arg.height = "1000";
+        }
     }
+
     //旋转度数
     if(options.arg.rotate ==""||undefined){
         options.arg.rotate = "null"
+    }else{
+        if(parseInt(options.arg.rotate) > 360){
+            options.arg.rotate = "null";
+        }
     }
+}
+
+//参数转换
+function parameterChange(){
+    options.arg.name = UnesCode(options.arg.name);
+    options.arg.befor_type = UnesCode(options.arg.befor_type);
+    options.arg.after_type = UnesCode(options.arg.after_type);
+    options.arg.input_test = UnesCode(options.arg.input_test);
+    options.arg.width = UnesCode(options.arg.width);
+    options.arg.height = UnesCode(options.arg.height);
+    options.arg.rotate = UnesCode(options.arg.rotate);
+    options.arg.position = UnesCode(options.arg.position);
+    options.arg.color = UnesCode(options.arg.color);
+}
+
+//解密参数
+function UnesCode(uncode){
+    if(uncode == ""){
+        return uncode;
+    }
+    uncode=unescape(uncode);        
+    var decryption=String.fromCharCode(uncode.charCodeAt(0)-uncode.length);        
+    for(var i=1;i<uncode.length;i++)  
+    {        
+        decryption+=String.fromCharCode(uncode.charCodeAt(i)-decryption.charCodeAt(i-1));        
+    }  
+
+    return decryption;
 }

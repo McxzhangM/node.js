@@ -7,6 +7,7 @@ import PIL.ImageFilter
 import PIL.ImageDraw
 import PIL.ImageFont
 import os, sys
+import datetime
 
 #参数个数：len(sys.argv)
 #脚本名：    sys.argv[0]
@@ -23,9 +24,15 @@ import os, sys
 #position:文字位置             8
 #color:文字颜色                9
 
+#当前时间
+nowTime = ''
+up_dir = 'D:/Github/node.js/nodejsProject/webServer/upload_image_dir/'
+save_dir = 'D:/Github/node.js/nodejsProject/webServer/download_image_dir/'
+
 
 #格式转换
 def convert(dir):
+    makeDir()
 
     im = PIL.Image.open(dir)
 
@@ -80,9 +87,21 @@ def convert(dir):
 
 
     #这个地方根据实际情况而定（存储图片的路径+图片名称+需要转换成的图片格式）
-    rgb_im.save("D:/Github/node.js/nodejsProject/webServer/download_image_dir/"+sys.argv[1]+"."+sys.argv[3])
+    rgb_im.save(save_dir + nowTime+'/'+sys.argv[1]+"."+sys.argv[3])
     im.close()
 
+
+#判断文件夹是否存在如不存在则创建
+def makeDir():
+    #获取当前时间作为文件夹名称，并判断是否已有文件夹，如果没有则创建文件夹
+    global nowTime
+    nowTime = datetime.datetime.now().strftime('%Y%m%d')
+
+    dirs = save_dir + nowTime
+
+    if not os.path.exists(dirs):
+        os.makedirs(dirs)
+
 if __name__ == '__main__':
-   dir = "D:/Github/node.js/nodejsProject/webServer/upload_image_dir/"+sys.argv[1]+'.'+sys.argv[2]  #运行后输入要进行转换的图片的路径
+   dir = up_dir + sys.argv[1]+'.'+sys.argv[2]  #运行后输入要进行转换的图片的路径
    convert(dir)

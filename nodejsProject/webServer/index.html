@@ -2,13 +2,13 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <title>首页</title>
+    <title>for-convert</title>
     <link rel="stylesheet" type="text/css" href="./view/css/base.css"/>
 </head>
 
 <body>
     <div id="home_head">
-        <div id="home_logo"></div>
+        <div id="home_logo"><img src="./view/image/logo-convert.png" alt="图片加载失败" style="height:70px;width: 15%"></div>
         <dir id="home_lable"></dir>
     </div>
 
@@ -22,81 +22,107 @@
         <hr style="height:1px;border:none;border-top:1px solid #555555;margin-top: 10px">
 
         <div id="center_input">
-            <p>上传文件</p>
-            <input type="file" name="inputfile" onchange="changeImage(this)" id="upload_input" accept="image/png, image/jpeg, image/gif, image/jpg"> 
-            <button onclick="upload_image()" style="width: 70px;height: 25px;">上传</button>
-
-            <span id="upload_alert" style="display: none">文件已上传</span>
+            <div>
+                <span>上传您想要转换格式的图片:&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                <input type="file" name="inputfile" onchange="changeImage(this)" id="upload_input" accept="image/png, image/jpeg, image/bmp, image/jpg, image/webp"> 
+                <button onclick="upload_image()" style="width: 90px;height: 35px;margin-left: 10%">上传图片</button>
+                <span id="upload_alert" style="display: none">图片已上传</span>
+            </div>
         </div>
-        <hr style="height:1px;border:none;border-top:1px solid #555555;margin-top: 10px">
          <!-- loading -->
         <div id="div_loading" style="display: none">
             <img src="./view/image/loading.gif" alt="加载失败">
         </div>
         <!-- 选项 -->
-        <div id="center_option">
-            
-            <label>格式：</label><br>
-            <input type="radio" name="type" value=""  checked/> 无
-            <input type="radio" name="type" value="png" /> png
-            <input type="radio" name="type" value="jpg" /> jpg
-            <input type="radio" name="type" value="jpeg" /> jpeg
-            <input type="radio" name="type" value="webp" /> webp
-            <input type="radio" name="type" value="bmp" /> bmp
-            <br>
-            
-            <button style="width: 70px;height: 30px;" onclick="download_image()">下载</button><br>
+        <div id="center_option" style="margin-top: 3%">
+            <div>
+                <label>转换格式：</label>
+                <select name="type" id="select_after_type" style="width: 10%">
+                    <option value="png">png</option>
+                    <option value="jpg">jpg</option>
+                    <option value="jpeg">jpeg</option>
+                    <option value="webp">webp</option>
+                    <option value="bmp">bmp</option>
+                </select>
 
+                <!-- <input type="radio" name="type" value="png" checked/> png
+                <input type="radio" name="type" value="jpg" /> jpg
+                <input type="radio" name="type" value="jpeg" /> jpeg
+                <input type="radio" name="type" value="webp" /> webp
+                <input type="radio" name="type" value="bmp" /> bmp
+                <br> -->
+            </div>
+
+            <fieldset style="width: 80%;margin-top: 3%;height: 230px;">
+                <legend style="margin-left: 5%">可选项:</legend>
+                <ul>
+                    <li class="li_line_height"> 
+                        <span>图片添加自定义文字：</span> 
+                        <span class="div-right" style="margin-right: 40%">
+                            <input type="text" maxlength="10" placeholder="不超过10个字" id="draw_text" value="">
+                        </span> 
+                    </li>
+                    <li class="li_line_height">
+                        <span>文字所处位置：</span>
+                        <span class="div-right" style="margin-right: 31%">
+                            <input type="radio" name="draw_text_position" value="leftTop" checked/>左上
+                            <input type="radio" name="draw_text_position" value="center" /> 中间
+                            <input type="radio" name="draw_text_position" value="rightTop" /> 右上
+                            <input type="radio" name="draw_text_position" value="leftBottom" /> 左下
+                            <input type="radio" name="draw_text_position" value="rightBottom" /> 右下
+                        </span>
+                    </li>
+                    <li class="li_line_height">
+                        <span>字体颜色：</span>
+                        <span class="div-right" style="margin-right: 37%">
+                            <input type="radio" name="draw_color" value="black" checked/>黑&nbsp;&nbsp;
+                            <input type="radio" name="draw_color" value="white" />白&nbsp;&nbsp;
+                            <input type="radio" name="draw_color" value="red" />红&nbsp;&nbsp;
+                            <input type="radio" name="draw_color" value="green" />绿&nbsp;&nbsp;
+                            <input type="radio" name="draw_color" value="blue" />蓝&nbsp;&nbsp;
+                        </span>
+                    </li>
+
+                    <li class="li_line_height">
+                        <span>自定义尺寸:</span>
+                        <span class="div-right" style="margin-right: 9%">
+                            宽：<input type="text" maxlength="4" placeholder="宽度为不超过2000的整数" id="width" value="">
+                            高：<input type="text" maxlength="4" placeholder="高度为不超过2000的整数" id="height" value=""><br>
+                        </span>
+                    </li>
+
+                    <li class="li_line_height">
+                        <span>图片逆时针旋转:</span>
+                        <span class="div-right" style="margin-right: 11%">
+                            <input type="radio" name="rotate" value="" checked/> 无&nbsp;&nbsp;&nbsp;
+                            <input type="radio" name="rotate" value="45" /> 45°
+                            <input type="radio" name="rotate" value="90" /> 90°
+                            <input type="radio" name="rotate" value="135" /> 135°
+                            <input type="radio" name="rotate" value="180" /> 180°
+                            <input type="radio" name="rotate" value="225" /> 225°
+                            <input type="radio" name="rotate" value="270" /> 270°
+                            <input type="radio" name="rotate" value="315" /> 315°
+                        </span>
+                    </li>
+                </ul>
+            </fieldset>
             <!-- ************************************************************************** -->
-            <label>可选项:</label><br>
-            <label>图片上添加自定义文字</label><br>
-            输入添加的文字：<input type="text" maxlength="100" placeholder="不超过100个字" id="draw_text" value=""><br>
-            文字所处位置：
-            <input type="radio" name="draw_text_position" value="leftTop" checked/>左上
-            <input type="radio" name="draw_text_position" value="center" /> 中间
-            <input type="radio" name="draw_text_position" value="rightTop" /> 右上
-            <input type="radio" name="draw_text_position" value="leftBottom" /> 左下
-            <input type="radio" name="draw_text_position" value="rightBottom" /> 右下 <br>
-            字体颜色：
-            <input type="radio" name="draw_color" value="black" checked/>黑
-            <input type="radio" name="draw_color" value="white" />白
-            <input type="radio" name="draw_color" value="red" />红
-            <input type="radio" name="draw_color" value="green" />绿
-            <input type="radio" name="draw_color" value="blue" />蓝<br>
-
-            <label>自定义尺寸</label><br>
-            宽：<input type="text" maxlength="10000" placeholder="宽度为不超过2000的整数" id="width" value="">
-            高：<input type="text" maxlength="10000" placeholder="高度为不超过2000的整数" id="height" value=""><br>
-
-
-            <label>图片逆时针旋转</label><br>
-            <input type="radio" name="rotate" value="" checked/> 无
-            <input type="radio" name="rotate" value="45" /> 45°
-            <input type="radio" name="rotate" value="90" /> 90°
-            <input type="radio" name="rotate" value="135" /> 135°
-            <input type="radio" name="rotate" value="180" /> 180°
-            <input type="radio" name="rotate" value="225" /> 225°
-            <input type="radio" name="rotate" value="270" /> 270°
-            <input type="radio" name="rotate" value="315" /> 315°
+            <button style="width: 90px;height: 40px;margin-top: 1%" onclick="download_image()">转换图片</button><br>
         </div>
 
         <!-- 说明 -->
         <div id="center_instructions">
-            <div id="instructions_left">
-                <p>使用说明:</p>
-                <p>1.文件大小不超过1M</p>
-                <p>2.文件类型必须为png,jpg,jpeg,webp,bmp之一</p>
-                <p>3.文件类型为必选项</p>
-                <p>4.添加文字必选输入想要添加的文字，并选取添加的位置和文字颜色</p>
-                <p>5.设置自定义图片尺寸，必须同时填写宽度和高度，宽高为不超过2000的整数</p>
-            </div>
-            <div id="instructions_right">
-                <p>使用说明:</p>
-                <p>1.</p>
-                <p>2.</p>
-                <p>3.</p>
-                <p>4.</p>
-            </div>
+            <fieldset id="instructions_left">
+                <legend style="margin-left: 5%">使用说明:</legend>
+                <div>
+                    <p class="p_line_height">1.文件大小不超过1M</p>
+                    <p class="p_line_height">2.文件类型必须为png,jpg,jpeg,webp,bmp之一</p>
+                    <p class="p_line_height">3.文件类型为必选项</p>
+                    <p class="p_line_height">4.添加文字必选输入想要添加的文字，并选取添加的位置和文字颜色</p>
+                    <p class="p_line_height">5.设置自定义图片尺寸，必须同时填写宽度和高度，宽高为不超过2000的整数</p>
+                    <p class="p_line_height"></p>
+                </div>
+            </fieldset>
         </div>
     </div>
 
