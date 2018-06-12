@@ -1,9 +1,13 @@
 var express =  require("express");
 var app = express();
 var router = require("./router/routers.js");
+var log4js = require("./view/logs/logs");
 
 var multer  = require('multer');
 var fs = require("fs");
+
+//加载日志模板
+log4js.use(app);
 
 app.use(
     multer({dest: '/tmp/'}).any()

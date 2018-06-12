@@ -114,6 +114,11 @@ function download_image(){
         return;
     }
 
+    if(option.image_name_arr || option.image_name_arr.length == 0){
+        alert("未上传图片");
+        return;
+    }
+
     try{
         var url = option.url + "/download?name="+esCode(option.image_name_arr[0])+'&befor_type='+esCode(option.image_name_arr[1])+
         "&after_type="+esCode(option.radio_type)+"&input_test="+esCode(option.radio_text)+"&width="+esCode(option.radio_width)+
