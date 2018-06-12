@@ -39,26 +39,33 @@ app.post('/upload_file',function(req,res,next){
     var imageType = UnesCode(req.body.image_type);
 
     //将获取到的文件储存到指定目录，并删除零时文件
-    var des_file = __dirname + "/upload_image_dir/" + imageNmae + "." + imageType;
+    var des_file = __dirname + "/upload_image_dir/"+new Date().format("yyyyMMdd")+'/'+ imageNmae + "." + imageType;
 
     //判断文件夹是否存在，不存在则创建，按照当前时间命名
-    fs.exists(options.download_path,function(exist) {
-
-    })
-
-    fs.readFile( req.files[0].path, function (err, data) {
+    fs.exists( __dirname + "/upload_image_dir/"+new Date().format("yyyyMMdd"),function(exist) {
+        if(!exist){
+            fs.mkdir(__dirname + "/upload_image_dir/"+new Date().format("yyyyMMdd"),function(err){
+                if (err) {
+                    return console.error(err);
+                }
+                console.log("目录创建成功");
+            });
+        }
+        //写入文件至upload_image_dir
+        fs.readFile( req.files[0].path, function (err, data) {
             fs.writeFile(des_file, data, function (err) {
-            if( err ){
-                console.log( err );
-                res.status(200).json({code:'0',data:'上传失败'});
-            }else{
-                fs.unlink(req.files[0].path, function() {
-                    if (err) throw console.log( err );
-                });
-                res.status(200).json({code:'1',data:'上传成功'});
-            }
+                if( err ){
+                    console.log( err );
+                    res.status(200).json({code:'0',data:'上传失败'});
+                }else{
+                    fs.unlink(req.files[0].path, function() {
+                        if (err) throw console.log( err );
+                    });
+                    res.status(200).json({code:'1',data:'上传成功'});
+                }
+            });
         });
-    });
+    })
 })
 
 app.all('*',router);

@@ -32,7 +32,6 @@ save_dir = 'D:/Github/node.js/nodejsProject/webServer/download_image_dir/'
 
 #格式转换
 def convert(dir):
-    makeDir()
 
     im = PIL.Image.open(dir)
 
@@ -60,7 +59,7 @@ def convert(dir):
         elif sys.argv[8] == 'rightTop':
             position_x,position_y = (w-150,20)
         elif sys.argv[8] == 'leftBottom':
-            position_x,position_y = (0,h)
+            position_x,position_y = (0,h-30)
         elif sys.argv[8] == 'rightBottom':
             position_x,position_y = (w-150,h-30)
         else:
@@ -102,6 +101,8 @@ def makeDir():
     if not os.path.exists(dirs):
         os.makedirs(dirs)
 
+    dir = up_dir + nowTime + "/" + sys.argv[1]+'.'+sys.argv[2]  #运行后输入要进行转换的图片的路径
+    convert(dir)
+
 if __name__ == '__main__':
-   dir = up_dir + sys.argv[1]+'.'+sys.argv[2]  #运行后输入要进行转换的图片的路径
-   convert(dir)
+   makeDir()

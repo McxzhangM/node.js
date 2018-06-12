@@ -69,6 +69,8 @@ function upload_image(){
     option.formData.append("image_name",esCode(option.image_name_arr[0]));
     option.formData.append("image_type",esCode(option.image_name_arr[1]));
 
+    //展开loading图
+    $("#div_loading").css('display','block');
     //上传请求
     $.ajax({
         url: option.url + '/upload_file',
@@ -82,11 +84,16 @@ function upload_image(){
                 alert(data.data);
             }
             $("#upload_input").val('');
-            $("#upload_alert").attr('display:block');
+            $("#upload_alert").css('display','block');
+
+            //隐藏loading图
+            $("#div_loading").css('display','none');
         },
         error:function(err){
             alert("上传失败");
             console.log(err);
+            //隐藏loading图
+            $("#div_loading").css('display','none');
         }
     })
 }
@@ -94,7 +101,7 @@ function upload_image(){
 //下载；文件名;转换后格式；添加文字,文字位置；宽，高；旋转度数
 function download_image(){
 
-    option.radio_type =  $('select_after_type').val();
+    option.radio_type =  $('#select_after_type option:selected').val();
     option.radio_text =  $('#draw_text').val();
     option.draw_text_position = $('input[name="draw_text_position"]:checked').val();
     option.draw_color = $('input[name="draw_color"]:checked').val();

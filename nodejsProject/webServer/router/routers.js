@@ -36,8 +36,8 @@ router.get('/download',function(req,res,next){
     //参数转换
     parameterChange();
 
-    options.download_path = options.web_dir + "/upload_image_dir/" + options.arg.name +'.'+ options.arg.befor_type;
-    options.exec_after_path = options.web_dir+"/download_image_dir/"+options.arg.name +'.'+ options.arg.after_type;
+    options.download_path = options.web_dir + "/upload_image_dir/" +new Date().format("yyyyMMdd")+'/'+ options.arg.name +'.'+ options.arg.befor_type;
+    options.exec_after_path = options.web_dir+"/download_image_dir/"+new Date().format("yyyyMMdd")+'/'+options.arg.name +'.'+ options.arg.after_type;
 
     fs.exists(options.download_path,function(exist) {
         if(exist){
@@ -71,12 +71,6 @@ router.get('/download',function(req,res,next){
 
 //通用文件路由
 router.get('/view/*',function(req,res,next){
-    options.pathname = url.parse(req.url).pathname;
-    res.sendFile(options.web_dir + options.pathname);
-})
-
-//图片
-router.get('/upload_image_dir/*',function(req,res,next){
     options.pathname = url.parse(req.url).pathname;
     res.sendFile(options.web_dir + options.pathname);
 })
@@ -169,3 +163,25 @@ function UnesCode(uncode){
 
     return decryption;
 }
+
+//格式化日期函数
+Date.prototype.format = function(fmt) { 
+    var o = { 
+       "M+" : this.getMonth()+1,                 //月份 
+       "d+" : this.getDate(),                    //日 
+       "h+" : this.getHours(),                   //小时 
+       "m+" : this.getMinutes(),                 //分 
+       "s+" : this.getSeconds(),                 //秒 
+       "q+" : Math.floor((this.getMonth()+3)/3), //季度 
+       "S"  : this.getMilliseconds()             //毫秒 
+   }; 
+   if(/(y+)/.test(fmt)) {
+           fmt=fmt.replace(RegExp.$1, (this.getFullYear()+"").substr(4 - RegExp.$1.length)); 
+   }
+    for(var k in o) {
+       if(new RegExp("("+ k +")").test(fmt)){
+            fmt = fmt.replace(RegExp.$1, (RegExp.$1.length==1) ? (o[k]) : (("00"+ o[k]).substr((""+ o[k]).length)));
+        }
+    }
+   return fmt; 
+}   

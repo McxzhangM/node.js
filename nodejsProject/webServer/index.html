@@ -12,8 +12,8 @@
         <dir id="home_lable"></dir>
     </div>
 
-    <div id="home_ad">
-    </div>
+    <!-- <div id="home_ad">
+    </div> -->
     
     <div id="main_center">
         <p style="margin-left: 40%">预览：</p>
@@ -26,7 +26,7 @@
                 <span>上传您想要转换格式的图片:&nbsp;&nbsp;&nbsp;&nbsp;</span>
                 <input type="file" name="inputfile" onchange="changeImage(this)" id="upload_input" accept="image/png, image/jpeg, image/bmp, image/jpg, image/webp"> 
                 <button onclick="upload_image()" style="width: 90px;height: 35px;margin-left: 10%">上传图片</button>
-                <span id="upload_alert" style="display: none">图片已上传</span>
+                <!-- <span id="upload_alert" style="display: none">图片已上传</span> -->
             </div>
         </div>
          <!-- loading -->
@@ -44,17 +44,10 @@
                     <option value="webp">webp</option>
                     <option value="bmp">bmp</option>
                 </select>
-
-                <!-- <input type="radio" name="type" value="png" checked/> png
-                <input type="radio" name="type" value="jpg" /> jpg
-                <input type="radio" name="type" value="jpeg" /> jpeg
-                <input type="radio" name="type" value="webp" /> webp
-                <input type="radio" name="type" value="bmp" /> bmp
-                <br> -->
             </div>
 
             <fieldset style="width: 80%;margin-top: 3%;height: 230px;">
-                <legend style="margin-left: 5%">可选项:</legend>
+                <legend style="margin-left: 5%"> <h3>可选项:</h3> </legend>
                 <ul>
                     <li class="li_line_height"> 
                         <span>图片添加自定义文字：</span> 
@@ -113,7 +106,7 @@
         <!-- 说明 -->
         <div id="center_instructions">
             <fieldset id="instructions_left">
-                <legend style="margin-left: 5%">使用说明:</legend>
+                <legend style="margin-left: 5%"><h3>使用说明:</h3></legend>
                 <div>
                     <p class="p_line_height">1.文件大小不超过1M</p>
                     <p class="p_line_height">2.文件类型必须为png,jpg,jpeg,webp,bmp之一</p>
@@ -129,6 +122,7 @@
     <hr id="home_hr"/>
 
     <div id="foot">
+        <h4 style="margin-left: 35%">反馈邮箱:weicoalition@outlook.com</h4>
     </div>
     
     <iframe id="home_download" style="display: none"></iframe>
