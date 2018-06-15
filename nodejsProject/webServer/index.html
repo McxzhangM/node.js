@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <title>for-convert</title>
+    <title>For-convert</title>
     <link rel="stylesheet" type="text/css" href="./view/css/base.css"/>
     <link rel="shortcut icon" href="./view/image/favicon.ico" /> 
     <link rel="bookmark" href="./view/image/favicon.ico" type="image/x-icon"/>
@@ -10,16 +10,17 @@
 
 <body>
     <div id="home_head">
-        <div id="home_logo"><img src="./view/image/logo-convert.png" alt="图片加载失败" style="height:70px;width: 15%"></div>
-        <dir id="home_lable"></dir>
+        <div id="home_logo"><img src="./view/image/logo-convert.png" alt="图片加载失败" style="height:90px;width: 15%"></div>
+        <div id="home_lable1"><h1>在线图片格式转换</h1></div>
+        <div id="home_lable2"><h3>图片大小、旋转、添加文字</h3></div>
     </div>
 
     <!-- <div id="home_ad">
     </div> -->
     
     <div id="main_center">
-        <p style="margin-left: 40%">预览：</p>
-        <img src="./view/image/windows2000.png" alt="图片加载失败" id="preview_image">
+        <p style="margin-left: 35%">预览：</p>
+        <img src="./view/image/unselect.png" alt="图片加载失败" id="preview_image">
 
         <hr style="height:1px;border:none;border-top:1px solid #555555;margin-top: 10px">
 
@@ -28,12 +29,12 @@
                 <span>上传您想要转换格式的图片:&nbsp;&nbsp;&nbsp;&nbsp;</span>
                 <input type="file" name="inputfile" onchange="changeImage(this)" id="upload_input" accept="image/png, image/jpeg, image/bmp, image/jpg, image/webp"> 
                 <button onclick="upload_image()" style="width: 90px;height: 35px;margin-left: 10%">上传图片</button>
-                <!-- <span id="upload_alert" style="display: none">图片已上传</span> -->
+                <span id="upload_alert" style="display: none">上传成功</span>
             </div>
         </div>
          <!-- loading -->
         <div id="div_loading" style="display: none">
-            <!-- <img src="./view/image/loading.gif" alt="加载失败"> -->
+            <img src="./view/image/loading.gif" alt="加载失败">
         </div>
         <!-- 选项 -->
         <div id="center_option" style="margin-top: 3%">
@@ -111,10 +112,10 @@
                 <legend style="margin-left: 5%"><h3>使用说明:</h3></legend>
                 <div>
                     <p class="p_line_height">1.文件大小不超过1M</p>
-                    <p class="p_line_height">2.文件类型必须为png,jpg,jpeg,webp,bmp之一</p>
-                    <p class="p_line_height">3.文件类型为必选项</p>
-                    <p class="p_line_height">4.添加文字必选输入想要添加的文字，并选取添加的位置和文字颜色</p>
-                    <p class="p_line_height">5.设置自定义图片尺寸，必须同时填写宽度和高度，宽高为不超过2000的整数</p>
+                    <p class="p_line_height">2.目前支持转换类型为png,jpg,jpeg,webp,bmp</p>
+                    <p class="p_line_height">3.本站支持在图片上添加文字的功能，可自定义添加位置和文字颜色，文字字数不宜过多，否则可能显示不全</p>
+                    <p class="p_line_height">4.支持设置自定义图片尺寸，填写宽度和高度，宽高为不超过2000的整数</p>
+                    <p class="p_line_height">5.支持对图片做旋转处理，旋转方向为逆时针旋转</p>
                     <p class="p_line_height"></p>
                 </div>
             </fieldset>

@@ -25,8 +25,8 @@ app.post('/upload_file',function(req,res,next){
     }
 
     //判断上传文件是否符合标准，大小和格式
-    if(file_size > 1){
-        res.status(200).json({code:'0',data:'文件大小超过1M'});
+    if(file_size > 5){
+        res.status(200).json({code:'0',data:'文件大小超过5M'});
         return;
     }
 

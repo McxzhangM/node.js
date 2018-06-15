@@ -1,7 +1,9 @@
 var log4js = require('log4js');  
 log4js.configure({  
     appenders: {
-        ruleConsole: {type: 'console'},
+        // ruleConsole: {
+        //     type: 'console',
+        // },
         ruleFile: {
             type: 'dateFile',
 
@@ -17,8 +19,8 @@ log4js.configure({
         }
     },
     categories: {
-        default: {appenders: ['ruleConsole', 'ruleFile'], level: 'info'}
-    }
+        default: {appenders: ['ruleFile'], level: 'info'}
+    },
 });  
   
   

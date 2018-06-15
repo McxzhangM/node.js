@@ -22,15 +22,13 @@ var reads= new FileReader();      //访问本地文件，获取文件地址实�
 function changeImage(image){    
     upload_image_obj = image.files[0];
 
-    console.log(upload_image_obj);
-
     if(upload_image_obj == undefined){
         return;
     }
 
-    //判断文件大小是否超过1M
-    if(upload_image_obj.size/(1024*1024) > 1){
-        alert("上传文件大小超过1M");
+    //判断文件大小是否超过5M
+    if(upload_image_obj.size/(1024*1024) > 5){
+        alert("上传文件大小超过5M");
         upload_image_obj ="";
         return;
     }
@@ -57,6 +55,8 @@ function upload_image(){
     option.formData = new FormData();
     //当前是否选中了图片
     if(upload_image_obj == "" || upload_image_obj == undefined || upload_image_obj.size == 0){
+        alert("请先选择图片");
+        $("#upload_alert").css('display','none');
         return;
     }
 
@@ -83,17 +83,23 @@ function upload_image(){
             if(data.code == "0"){
                 alert(data.data);
             }
+            //清空选中图片
             $("#upload_input").val('');
-            $("#upload_alert").css('display','block');
+            //显示已上传文字
+            $("#upload_alert").css('display','inline');
+            //清空上传图片对象
+            upload_image_obj = "";
 
             //隐藏loading图
             $("#div_loading").css('display','none');
         },
         error:function(err){
             alert("上传失败");
-            console.log(err);
+
             //隐藏loading图
             $("#div_loading").css('display','none');
+            //显示已上传文字
+            $("#upload_alert").css('display','none');
         }
     })
 }
@@ -110,11 +116,11 @@ function download_image(){
     option.radio_rotate = $('input[name="rotate"]:checked').val();
 
     if(option.radio_type == ""){
-        alert("未选中转换类型");
+        alert("未选择转换类型");
         return;
     }
 
-    if(option.image_name_arr || option.image_name_arr.length == 0){
+    if(!(option.image_name_arr) || option.image_name_arr.length == 0){
         alert("未上传图片");
         return;
     }
