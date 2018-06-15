@@ -23,12 +23,15 @@ import datetime
 #rotate:旋转度数               7
 #position:文字位置             8
 #color:文字颜色                9
+#up_dir:上传图片文件夹路径      10
+#save_dir：下载图片文件夹路径   11
+#font    :字体                 12
 
 #当前时间
 nowTime = ''
-up_dir = 'D:/Github/node.js/nodejsProject/webServer/upload_image_dir/'
-save_dir = 'D:/Github/node.js/nodejsProject/webServer/download_image_dir/'
-
+up_dir = sys.argv[10]
+save_dir = sys.argv[11]
+font_style = sys.argv[12]
 
 #格式转换
 def convert(dir):
@@ -49,7 +52,7 @@ def convert(dir):
     if sys.argv[4] and sys.argv[4] !="null" and sys.argv[8] and sys.argv[8] != "null" and sys.argv[9] and sys.argv[9] != "null":
 
         draw = PIL.ImageDraw.Draw(rgb_im)
-        font = PIL.ImageFont.truetype("C:\Windows\Fonts\simsun.ttc",20)#to do 待定
+        font = PIL.ImageFont.truetype(font_style,20)
         text = sys.argv[4]
 
         #参数处理，处理位置和颜色

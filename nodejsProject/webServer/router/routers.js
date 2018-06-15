@@ -15,9 +15,11 @@ var root_dir = require("../global_config");
 var options = {
     pathname:"",       //通用文件，图片路由路径
     download_path: "", //下载链接
-    arg:""             //文件下载链接参数
+    arg:"",             //文件下载链接参数
+    py_upload_path: root_dir + '/upload_image_dir/',  //python脚本查找上传图片路径
+    py_download_path: root_dir + '/download_image_dir/', //python脚本查找下载图片路径
+    py_Font_style:root_dir+'/view/css/simsun.ttc'     //字体
 };
-
 
 router.get('/',function(req,res,next){
     res.sendFile(root_dir + "/index.html");
@@ -50,7 +52,8 @@ router.get('/download',function(req,res,next){
             cp.exec('python testPy.py '+options.arg.name+' '+options.arg.befor_type+
             ' '+options.arg.after_type+' '+options.arg.input_test+
             ' '+options.arg.width+' '+options.arg.height+' '+options.arg.rotate+
-            ' '+options.arg.position+' '+options.arg.color,
+            ' '+options.arg.position+' '+options.arg.color+' '+options.py_upload_path+
+            ' '+options.py_download_path+' '+options.py_Font_style,
             function(error,stdout,stderr){
                 if(error !== null){
                     console.log('exec error:'+ error);
