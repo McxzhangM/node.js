@@ -75,7 +75,7 @@ app.post('/upload_file',function(req,res,next){
 app.all('*',router);
 
 var server = app.listen(8888,"127.0.0.1",function(){
-    console.log("server run success from http://127.0.0.1:8888");
+    console.log("server run success from http://0.0.0.0:3389");
 });
 
 //解密参数

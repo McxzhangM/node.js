@@ -70,13 +70,12 @@ function upload_image(){
     option.formData.append("image_type",esCode(option.image_name_arr[1]));
 
     //展开loading图
-    $("#div_loading").css('display','block');
+    $("#div_loading").css('display','block')
     //上传请求
     $.ajax({
         url: option.url + '/upload_file',
         type: 'POST',
         data : option.formData,
-        async : false,
         processData : false,
         contentType : false,
         success:function(data){
@@ -125,11 +124,23 @@ function download_image(){
         return;
     }
 
+    var url = option.url + "/download?name="+esCode(option.image_name_arr[0])+'&befor_type='+esCode(option.image_name_arr[1])+
+    "&after_type="+esCode(option.radio_type)+"&input_test="+esCode(option.radio_text)+"&width="+esCode(option.radio_width)+
+    "&height="+esCode(option.radio_height)+"&rotate="+esCode(option.radio_rotate)+"&position="+esCode(option.draw_text_position)+
+    "&color="+esCode(option.draw_color);
+
+    if(!!window.ActiveXObject || "ActiveXObject" in window){//判断是否为IE
+
+        if(window.navigator.msSaveBlob){//IE10+方法
+
+        // var blobObject = new Blob([url]); 
+
+        //     window.navigator.msSaveBlob(blobObject,option.image_name_arr[0]+'.'+option.radio_type); 
+           alert('检测到您正在使用IE浏览器，可能会遇到未知的问题，请更换浏览器')
+        }
+    }
+
     try{
-        var url = option.url + "/download?name="+esCode(option.image_name_arr[0])+'&befor_type='+esCode(option.image_name_arr[1])+
-        "&after_type="+esCode(option.radio_type)+"&input_test="+esCode(option.radio_text)+"&width="+esCode(option.radio_width)+
-        "&height="+esCode(option.radio_height)+"&rotate="+esCode(option.radio_rotate)+"&position="+esCode(option.draw_text_position)+
-        "&color="+esCode(option.draw_color);
 
         $("#home_download").attr('src',url);
     }catch(e){ 

@@ -1,6 +1,5 @@
-#!/usr/bin/python3
-
-# -*- coding: UTF-8 -*-//解决出现Non-ASCII character '\xe5' in file的问题
+﻿#!/usr/bin/python3
+#encoding:utf-8
 #文件格式转换
 import PIL.Image
 import PIL.ImageFilter
@@ -52,7 +51,7 @@ def convert(dir):
     if sys.argv[4] and sys.argv[4] !="null" and sys.argv[8] and sys.argv[8] != "null" and sys.argv[9] and sys.argv[9] != "null":
 
         draw = PIL.ImageDraw.Draw(rgb_im)
-        font = PIL.ImageFont.truetype(font_style,20)
+        font = PIL.ImageFont.truetype(font_style,40)
         text = sys.argv[4]
 
         #参数处理，处理位置和颜色
