@@ -2,7 +2,9 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <title>For-convert</title>
+    <meta content="这是一款在线图片格式转换工具，无需安装，完全免费！支持.jpg .jpeg .webp .png .bmp此类图片格式之间互相转换。支持调整图片大小，图片加水印，图片加文字，图片旋转等" name="description">
+    <meta content="图片格式,图片转换,图片格式转换器,图片格式转换,在线制作图片,图片加水印，图片加文字，图片旋转" name="keywords">
+    <title>在线图片格式转换、加水印、加文字</title>
     <link rel="stylesheet" type="text/css" href="./view/css/base.css"/>
     <link rel="shortcut icon" href="./view/image/favicon.ico" /> 
     <link rel="bookmark" href="./view/image/favicon.ico" type="image/x-icon"/>
@@ -39,7 +41,7 @@
         <!-- 选项 -->
         <div id="center_option" style="margin-top: 3%">
             <div>
-                <label>转换格式：</label>
+                <span>转换格式：</span>
                 <select name="type" id="select_after_type" style="width: 10%">
                     <option value="png">png</option>
                     <option value="jpg">jpg</option>
@@ -108,17 +110,27 @@
 
         <!-- 说明 -->
         <div id="center_instructions">
-            <fieldset id="instructions_left">
-                <legend style="margin-left: 5%"><h3>使用说明:</h3></legend>
-                <div>
-                    <p class="p_line_height">1.文件大小不超过5M</p>
-                    <p class="p_line_height">2.目前支持转换类型为png,jpg,jpeg,webp,bmp</p>
-                    <p class="p_line_height">3.本站支持在图片上添加文字的功能，可自定义添加位置和文字颜色，文字字数不宜过多，否则可能显示不全</p>
-                    <p class="p_line_height">4.支持设置自定义图片尺寸，填写宽度和高度，宽高为不超过2000的整数</p>
-                    <p class="p_line_height">5.支持对图片做旋转处理，旋转方向为逆时针旋转</p>
-                    <p class="p_line_height"></p>
-                </div>
-            </fieldset>
+            <div style="height: 210px;">
+                <fieldset id="instructions_left">
+                    <legend style="margin-left: 5%"><h3>使用说明:</h3></legend>
+                    <div>
+                        <p class="p_line_height">1.文件大小不超过5M</p>
+                        <p class="p_line_height">2.目前支持转换类型为png,jpg,jpeg,webp,bmp</p>
+                        <p class="p_line_height">3.本站支持在图片上添加文字的功能，可自定义添加位置和文字颜色，文字字数不宜过多，否则可能显示不全</p>
+                        <p class="p_line_height">4.支持设置自定义图片尺寸，填写宽度和高度，宽高为不超过2000的整数</p>
+                        <p class="p_line_height">5.支持对图片做旋转处理，旋转方向为逆时针旋转</p>
+                        <p class="p_line_height"></p>
+                    </div>
+                </fieldset>
+            </div>
+            <div style="margin-top: 2%;margin-left: 15%;">
+                <span>相关导航：</span>
+                <ol style="margin-left: 9%;">
+                    <li> <a href="https://tinypng.com/" target="_blank">一个不错的在线图片优化/图片压缩工具，支持批量压缩，显著减少图片体积</a></li>
+                    <li> <a href="https://blog.csdn.net/qq_40427481/article/details/78263051" target="_blank">5种方法告诉你怎么从图片中提取文字</a></li>
+                    <li> <a href="http://blog.sina.com.cn/s/blog_c206a2c30102wnct.html" target="_blank">你们要的GIF动图制作全攻略！看完就会做！(实操教程，PS详细教程) </a></li>
+                </ol>
+            </div>
         </div>
     </div>
 
@@ -132,5 +144,5 @@
 
 </body>
 </html>
-<script type="text/javascript" src="./view/js/jquery-3.3.1.min.js"></script>
+<script type="text/javascript" src="./view/js/jquery-1.9.1.min.js"></script>
 <script type="text/javascript" src="./index.js"></script>

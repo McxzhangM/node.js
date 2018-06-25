@@ -135,8 +135,8 @@ function download_image(){
 
         // var blobObject = new Blob([url]); 
 
-        //     window.navigator.msSaveBlob(blobObject,option.image_name_arr[0]+'.'+option.radio_type); 
-           alert('检测到您正在使用IE浏览器，可能会遇到未知的问题，请更换浏览器')
+        //window.navigator.msSaveBlob(blobObject,option.image_name_arr[0]+'.'+option.radio_type); 
+           alert('检测到您正在使用IE浏览器，可能会遇到未知的问题，建议更换浏览器');
         }
     }
 
