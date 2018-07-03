@@ -27,8 +27,8 @@ function changeImage(image){
     }
 
     //判断文件大小是否超过5M
-    if(upload_image_obj.size/(1024*1024) > 5){
-        alert("上传文件大小超过5M");
+    if(upload_image_obj.size/(1024*1024) > 1){
+        alert("上传文件大小超过1M");
         upload_image_obj ="";
         return;
     }

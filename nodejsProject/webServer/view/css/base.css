@@ -23,6 +23,7 @@ a{
     font-style:italic;
     font-size: 30px;
     color: white;
+    font-weight:bold;
 }
 #home_lable2{
     position: absolute;
@@ -31,6 +32,7 @@ a{
     font-style:italic;
     font-size: 20px;
     color: wheat;
+    font-weight:bold;
 }
 
 #home_ad{
@@ -57,7 +59,7 @@ a{
 }
 
 #center_instructions{
-    height: 330px;
+    height: 350px;
     margin-top: 1%;
 }
 

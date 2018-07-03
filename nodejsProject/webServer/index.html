@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta content="这是一款在线图片格式转换工具，无需安装，完全免费！支持.jpg .jpeg .webp .png .bmp此类图片格式之间互相转换。支持调整图片大小，图片加水印，图片加文字，图片旋转等" name="description">
-    <meta content="图片格式,图片转换,图片格式转换器,图片格式转换,在线制作图片,图片加水印，图片加文字，图片旋转" name="keywords">
+    <meta content="图片格式,图片转换,图片格式转换器,图片格式转换,图片加水印，图片加文字，图片旋转" name="keywords">
     <title>在线图片格式转换、加水印、加文字</title>
     <link rel="stylesheet" type="text/css" href="./view/css/base.css"/>
     <link rel="shortcut icon" href="./view/image/favicon.ico" /> 
@@ -13,15 +13,12 @@
 <body>
     <div id="home_head">
         <div id="home_logo"><img src="./view/image/logo-convert.png" alt="图片加载失败" style="height:90px;width: 15%"></div>
-        <div id="home_lable1"><h1>在线图片格式转换</h1></div>
-        <div id="home_lable2"><h3>图片大小、旋转、添加文字</h3></div>
+        <div id="home_lable1"><span>在线图片格式转换</span></div>
+        <div id="home_lable2"><span>图片大小、旋转、添加文字</span></div>
     </div>
 
-    <!-- <div id="home_ad">
-    </div> -->
-    
     <div id="main_center">
-        <p style="margin-left: 35%">预览：</p>
+        <p>在线图片格式转换</p>
         <img src="./view/image/unselect.png" alt="图片加载失败" id="preview_image">
 
         <hr style="height:1px;border:none;border-top:1px solid #555555;margin-top: 10px">
@@ -41,7 +38,7 @@
         <!-- 选项 -->
         <div id="center_option" style="margin-top: 3%">
             <div>
-                <span>转换格式：</span>
+                <span>格式转换：</span>
                 <select name="type" id="select_after_type" style="width: 10%">
                     <option value="png">png</option>
                     <option value="jpg">jpg</option>
@@ -105,16 +102,30 @@
                 </ul>
             </fieldset>
 
-            <button style="width: 90px;height: 40px;margin-top: 1%" onclick="download_image()">转换图片</button><br>
+            <button style="width: 110px;height: 40px;margin-top: 1%" onclick="download_image()">图片格式转换</button><br>
         </div>
-
+        <div style="margin-top: 2%;margin-left: 15%;">
+                <span>热门资讯：</span>
+                <ul style="margin-left: 9%;">
+                    <li style="line-height: 2"> <a href="http://www.sohu.com/a/239026502_100034882" target="_blank" style="color: dodgerblue;font-size: 16px;margin-top: 2px">世界悲!“塑料夫妻”因梅西C罗离婚,阿根廷球迷输球...</a></li>
+                   
+                    <li style="line-height: 2"> <a href="http://news.ifeng.com/a/20180703/58971992_0.shtml" target="_blank" style="color: dodgerblue;font-size: 16px;margin-top: 2px">日本队清理更衣室留下字条：谢谢 日本队被赞榜样</a></li>  
+  
+                    <li style="line-height: 2"> <a href="http://bj.people.com.cn/n2/2018/0703/c233086-31773249.html" target="_blank" style="color: dodgerblue;font-size: 16px">身高不足无资格证是怎么回事 身高不足当年为什么被录取</a></li>
+     
+                    <li style="line-height: 2"> <a href="http://news.e23.cn/redian/2018-07-03/2018070300394.html" target="_blank" style="color: dodgerblue;font-size: 16px">感谢狗狗救我猫命!猫咪中毒输狗血 流着狗血的猫有何...</a></li>
+                    
+                    <li style="line-height: 2"> <a href="http://www.sohu.com/a/239040112_114774" target="_blank" style="color: dodgerblue;font-size: 16px">中兴回应“被破产”为假消息 已经做好了恢复经营预案</a></li>
+                </ul>
+        </div>
         <!-- 说明 -->
         <div id="center_instructions">
-            <div style="height: 210px;">
+            <div style="height: 220px;">
                 <fieldset id="instructions_left">
                     <legend style="margin-left: 5%"><h3>使用说明:</h3></legend>
                     <div>
-                        <p class="p_line_height">1.文件大小不超过5M</p>
+                        <p class="p_line_height">在线图片格式转换服务，同时支持多种格式互转，图片大小调整，加水印，加文字等多种功能</p>
+                        <p class="p_line_height">1.文件大小不超过1M</p>
                         <p class="p_line_height">2.目前支持转换类型为png,jpg,jpeg,webp,bmp</p>
                         <p class="p_line_height">3.本站支持在图片上添加文字的功能，可自定义添加位置和文字颜色，文字字数不宜过多，否则可能显示不全</p>
                         <p class="p_line_height">4.支持设置自定义图片尺寸，填写宽度和高度，宽高为不超过2000的整数</p>
@@ -137,7 +148,8 @@
     <hr id="home_hr"/>
 
     <div id="foot">
-        <h4 style="margin-left: 35%">反馈邮箱:weicoalition@outlook.com</h4>
+        <p style="margin-left: 5%">在线图片格式转换，支持.jpg .jpeg .webp .png .bmp此类图片格式之间互相转换。支持调整图片大小，图片加水印，图片加文字，图片旋转等多种功能</p>
+        <span style="margin-left: 35%">反馈邮箱:weicoalition@outlook.com</span>
     </div>
     
     <iframe id="home_download" style="display: none" src=""></iframe>
