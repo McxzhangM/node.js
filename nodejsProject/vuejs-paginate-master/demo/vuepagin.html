@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Vue 测试实例 - 菜鸟教程(runoob.com)</title>
+<script src="https://cdn.bootcss.com/vue/2.4.2/vue.min.js"></script>
+<script src="https://unpkg.com/vuejs-paginate@latest"></script>
+</head>
+<body>
+<div id="app">
+  <p>{{ message }}</p>
+      <paginate
+      :page-count="20"
+      :click-handler="clickCallback"
+      :prev-text="'Prev'"
+      :next-text="'Next'"
+      :container-class="'className'">
+    </paginate>
+</div>
+<script>
+Vue.component('paginate', VuejsPaginate)
+new Vue({
+  el: '#app',
+  data: {
+    message: 'Hello Vue.js!'
+  },
+  methods: {
+    clickCallback: function(pageNum) {
+      console.log(pageNum)
+    }
+  }
+})
+</script>
+</body>
+</html>
