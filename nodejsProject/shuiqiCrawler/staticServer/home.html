@@ -1,0 +1,30 @@
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>首页</title>
+</head>
+
+<body>
+    <p>这是首页</p>
+    姓名:<p id="content1"></p>
+</body>
+</html>
+
+<script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
+<script>
+
+    $.ajax({
+            url: "http://localhost:8990/json",
+            type : "get",
+            dataType : "json",
+            success: function (data) {
+                var re =JSON.parse(data);
+
+                $("#content1").text(re.name);
+            },
+            error: function (error) {
+                $("#content1").text("error");
+                console.log(error);
+            }
+    });
+</script>

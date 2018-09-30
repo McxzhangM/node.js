@@ -9,6 +9,19 @@ var cheerio = require("cheerio");
 var request = require("request");
 var i = 0;
 var url = "http://www.ss.pku.edu.cn/index.php/newscenter/news/2391";
+var mysql = require("mysql");
+
+var connection = mysql.createConnection({
+    host : 'localhost',
+    user : 'root',
+    password : '173.gtf.664',
+    database : 'testDB'
+});
+
+connection.connect();
+
+//储存每次爬取的数据到数据库中
+var image_url = "";
 
 function startRequest(x){
 
@@ -40,10 +53,12 @@ function startRequest(x){
                 i: i = i + 1
             };
 
-            console.log(news_item + "****" + i);
-
             saveContent($,news_item.title);
             saveImage($,news_item.title);
+
+            console.log(news_item + "****" + i);
+            //储存内容到数据库
+            saveDataBase(news_item.title,image_url);
 
             var nextLink = "http://www.ss.pku.edu.cn" + $("li.next a").attr('href');
                 str = nextLink.split('-');
@@ -52,8 +67,10 @@ function startRequest(x){
                 //控制爬去数量
                 if(i < 10){
                     startRequest(nexturl);
+                }else{
+                    connection.end();
                 }
-        })
+        });
 
     }).on('error',function(err){
         console.log(err);
@@ -91,6 +108,8 @@ function saveImage($,title){
         var imge_fileName = imge_title + '.jpg';
         var img_src = 'http://www.ss.pku.edu.cn' + $(this).attr('src');
 
+        image_url = img_src;
+
         //利用request模块发送请求获取图片
         request.head(img_src,function(err,res,body){
             if(err){
@@ -101,5 +120,20 @@ function saveImage($,title){
         request(img_src).pipe(fs.createWriteStream('./image/'+ title + '---' + imge_fileName));
     })
 };
+
+//储存内容到数据库
+function saveDataBase(title,image){
+    //插入数据
+    var insertDB = "INSERT INTO cra_web(title, image_url) VALUES (?,?)";
+    var insertParams = [title,image];
+    
+    connection.query(insertDB,insertParams,function(err,result){
+        if(err){
+            console.log("create table error",err.message);
+            return;
+        }
+        console.log(result);
+    });
+}
 
 startRequest(url);

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>liebiao</title>
+<link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+<link rel="stylesheet" href="../static/css/style.css">
+<script src='../component/homeComponent.js'></script>
+</head>
+<body>
+    <div id="app">
+        <el-container>
+            <el-header height='100px'>
+                <div></div>
+                <div style="position:absolute;right:4%;top:1%">
+                    <input type="text" class='input_search' id="search_text" value="">
+                    <el-button type="primary" icon="el-icon-search" @click="searchClick()">搜索</el-button>
+                </div>
+            </el-header>
+            
+            <el-main height='330px'>
+                <el-row :gutter="10" style="width: 70%;left: 10%;" v-for="(item,index) in chapter_list">
+                    <el-col :span="6"><div class="grid-content bg-purple">{{item}}</div></el-col>
+                    <el-col :span="6"><div class="grid-content bg-purple">{{item}}</div></el-col>
+                    <el-col :span="6"><div class="grid-content bg-purple">{{item}}</div></el-col>
+                    <el-col :span="6"><div class="grid-content bg-purple">{{item}}</div></el-col>
+                </el-row>
+            </el-main>
+           
+            <el-footer height='100px'>
+                foot
+            </el-footer>
+        </el-container>
+    </div>
+</body>
+<script src="../static/src/vue-min-2.4.2.js"></script>
+<script src="../static/src/elementUI.js"></script>
+<script src="../static/src/jquery-1.10.1.js"></script>
+<script>
+    new Vue({
+    el : '#app',
+    components:{
+    },
+    data (){
+        return{
+            chapter_list:['chapter1','chapter2','chapter3','chapter4','chapter5',
+                        'chapter6','chapter7','chapter8','chapter9','chapter10']
+        }
+    },
+
+    methods:{
+        searchClick:function(){
+            var serarch_text = $('#search_text').val();
+            alert(serarch_text);
+        }
+    }
+});
+</script>
+</html>
